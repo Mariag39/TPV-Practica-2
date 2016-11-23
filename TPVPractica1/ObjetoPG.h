@@ -1,7 +1,7 @@
 #pragma once
 #include "ObjetoJuego.h"
-class ObjetoPG :
-	public ObjetoJuego
+
+class ObjetoPG :	public ObjetoJuego
 {
 public:
 	ObjetoPG();

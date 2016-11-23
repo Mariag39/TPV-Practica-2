@@ -27,7 +27,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -125,6 +125,7 @@
     <ClCompile Include="GlobosPG.cpp" />
     <ClCompile Include="JuegoPG.cpp" />
     <ClCompile Include="mainP1.cpp" />
+    <ClCompile Include="Mariposa.cpp" />
     <ClCompile Include="ObjetoPG.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="TexturaSDL.cpp" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="GlobosPG.h" />
     <ClInclude Include="JuegoPG.h" />
+    <ClInclude Include="Mariposa.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="ObjetoPG.h" />
     <ClInclude Include="Sound.h" />

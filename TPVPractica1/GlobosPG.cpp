@@ -1,10 +1,9 @@
 #include "GlobosPG.h"
 #include "JuegoPG.h"
 #include "SDL_image.h"
-#include "SDL_mixer.h"
 using namespace std;
 
-GlobosPG::GlobosPG(TexturaSDL* img, int px, int py) :pTextura(img)
+GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(img)
 {
 
 	
@@ -19,7 +18,7 @@ GlobosPG::GlobosPG(TexturaSDL* img, int px, int py) :pTextura(img)
 
 }
 
-bool GlobosPG::onClick(int pmx, int pmy) {
+bool GlobosPG::onClick() {
 	bool destruido = false;
 	if (visible && !explotado) {
 		if (pmx >= rect.x && (rect.x + rect.w) >= pmx && pmy >= rect.y && (rect.y + rect.h) >= pmy) {
@@ -34,7 +33,7 @@ bool GlobosPG::onClick(int pmx, int pmy) {
 	
 }
 
-bool GlobosPG::update() {
+bool GlobosPG::update() {                        //¡no es bool!
 	//actualiza el estado de los globos
 	bool destruido = false;
 	if (!explotado && visible) {
@@ -59,7 +58,7 @@ bool GlobosPG::update() {
 
 
 
-void GlobosPG::draw(SDL_Renderer* pRenderer) const {
+void GlobosPG::draw() const {
 	if (visible && !explotado) {
 
 		pTextura->draw(pRenderer, rect);

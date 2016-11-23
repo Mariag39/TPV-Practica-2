@@ -1,10 +1,10 @@
 #pragma once
 #include "SDL.h"
 #include <vector>
-#include "SDL_mixer.h"
 #include "SDL_image.h"
 #include "Sound.h"
 #include "GlobosPG.h"
+#include "ObjetoJuego.h"
 using namespace std;
 
 
@@ -12,15 +12,13 @@ using namespace std;
 class JuegoPG
 {
 
-
-
-
 public:
 	JuegoPG();
 	~JuegoPG();
 	void run();
 	void onExit();
-	TexturaSDL* getTextura(TexturaSDL et) const { return m_globostext[et]; } //es el vector de texturas??
+	enum Textura_t { TFondo, TGlobo, TPremio, TMariposa };
+	TexturaSDL* getTextura(Textura_t et) const { return m_globostext[et]; } //es el vector de texturas??
 	SDL_Renderer* getRender() const;
 	void getMousePos(int& mpx, int& mpy) const;
 	void newBaja(ObjetoJuego* po); // Los objetos informarán al juego cuando causen baja  
@@ -33,7 +31,7 @@ public:
 private:
 	/*Sound* music;*/
 	bool initSDL();
-	enum Textura_t {TFondo, TGlobo, TPremio, TMariposa};
+	
 	vector<string> nombarch;
 	void closeSDL();
 	bool initGlobos();

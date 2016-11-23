@@ -1,7 +1,6 @@
 #include "JuegoPG.h"
 #include "SDL.h"
 #include "Sound.h"
-#include "SDL_mixer.h"
 #include "TexturaSDL.h"
 #include "GlobosPG.h"
 #include <iostream>
