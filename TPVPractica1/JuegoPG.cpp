@@ -25,7 +25,7 @@ JuegoPG::JuegoPG()
 
 
 	gameOver = false;
-	sky.load(pRenderer, "..\\bmps\\sky.png");
+	sky->load(pRenderer, "..\\bmps\\sky.png");
 	punts = 0;
 	numGlobos = 20;
 	exit = false;
@@ -88,11 +88,11 @@ void JuegoPG::render()  {
 	background.w = SCREEN_WIDTH;
 	background.y = 0;
 	background.x = 0;
-	sky.draw(pRenderer, background);
+	sky->draw(pRenderer, background);
 	// Draw objets Draw()
 
 	for (int i = 0; i < globosvec.size(); i++) {
-		globosvec[i]->draw(pRenderer);
+		globosvec[i]->draw();
 	}
 
 	//Show window																			
@@ -110,7 +110,7 @@ bool JuegoPG::initGlobos() {
 	for (int i = 0; i < numGlobos; i++) {
 		x = rand() % (SCREEN_HEIGHT - 5);
 		y = rand() % (SCREEN_WIDTH - 5);
-		GlobosPG* globos = new GlobosPG(m_globostext[0], x, y);
+		GlobosPG* globos = new GlobosPG(m_globostext[0], x, y); //falta el puntero a juegoPG
 		globosvec.push_back(globos);
 
 	}
@@ -119,17 +119,20 @@ bool JuegoPG::initGlobos() {
 }
 void JuegoPG::freeGlobos() {
 	for (int i = 0; i < globosvec.size(); ++i) {
-		globosvec[i] = nullptr;
+		delete globosvec[i];
 	}
-	m_globostext[0] = nullptr;
+	delete m_globostext[0];
 }
 void JuegoPG::onClick(int mpx, int mpy) {
 	for (int i = 0; i < globosvec.size(); ++i) {
-		if (globosvec[i]->onClick(mpx, mpy)) {
+		if (globosvec[i]->onClick()) {
 			punts += globosvec[i]->puntos;
 			numGlobos--;
 		}
 	}
+}
+void JuegoPG::getMousePos(int& mpx, int& mpy) const{
+
 }
 
 
@@ -208,5 +211,6 @@ JuegoPG::~JuegoPG()
 {
 	freeGlobos();
 	closeSDL();
+	delete sky;
 	
 }

@@ -50,7 +50,7 @@ private:
 	const int SCREEN_WIDTH = 640;   //Screen dimension
 	const int SCREEN_HEIGHT = 480;  //Screen dimension
 	SDL_Rect background;
-	TexturaSDL sky;
+	TexturaSDL* sky = new TexturaSDL();
 	bool error;
 	bool exit;
 	bool gameOver;

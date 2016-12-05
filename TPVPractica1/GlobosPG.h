@@ -15,7 +15,7 @@ public:
 	~GlobosPG();
 	void draw() const;
 	bool onClick();
-	bool update();
+	void update();
 	int puntos;
 	
 

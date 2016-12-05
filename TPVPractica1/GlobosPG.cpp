@@ -21,7 +21,7 @@ GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(im
 bool GlobosPG::onClick() {
 	bool destruido = false;
 	if (visible && !explotado) {
-		if (pmx >= rect.x && (rect.x + rect.w) >= pmx && pmy >= rect.y && (rect.y + rect.h) >= pmy) {
+		  if (dentro()){ //static cast??
 			visible = false;
 			destruido = true;
 			//puntos++;
@@ -33,7 +33,7 @@ bool GlobosPG::onClick() {
 	
 }
 
-bool GlobosPG::update() {                        //¡no es bool!
+void GlobosPG::update() {                       
 	//actualiza el estado de los globos
 	bool destruido = false;
 	if (!explotado && visible) {
@@ -52,7 +52,7 @@ bool GlobosPG::update() {                        //¡no es bool!
 	}
 	if (!explotado && !visible)
 		if (rand() % 100 < PVIS) visible = true; else visible = false;
-	return destruido;
+	//return destruido;
 }
 
 

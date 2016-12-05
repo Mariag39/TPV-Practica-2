@@ -11,6 +11,7 @@ int main(int argc, char* args[]) {
 	JuegoPG* game = new JuegoPG();
 
 	game->run();
+	delete game;
 	cout << " ¡Error!\n Pulsa ENTER para cerrar";  cin.ignore();
 	return 0;
 }
