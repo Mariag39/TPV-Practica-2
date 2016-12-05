@@ -17,7 +17,7 @@ public:
 	~JuegoPG();
 	void run();
 	void onExit();
-	enum Textura_t { TFondo, TGlobo, TPremio, TMariposa };
+	enum Textura_t { TFondo = 0, TGlobo = 1, TPremio = 2, TMariposa = 3 };
 	TexturaSDL* getTextura(Textura_t et) const { return m_globostext[et]; } //es el vector de texturas??
 	SDL_Renderer* getRender() const;
 	void getMousePos(int& mpx, int& mpy) const;
@@ -34,8 +34,6 @@ private:
 	
 	vector<string> nombarch;
 	void closeSDL();
-	bool initGlobos();
-	void freeGlobos();
 	void Mensaje(string msg1, string msg2);
 	void render() ;
 	void onClick(int mpx, int mpy);
@@ -45,7 +43,6 @@ private:
 	SDL_Renderer* pRenderer;
 	SDL_Texture* pTexture;
 	vector<TexturaSDL*> m_globostext;
-	
 	vector<ObjetoJuego*> globosvec; //era GlobosPG
 	const int SCREEN_WIDTH = 640;   //Screen dimension
 	const int SCREEN_HEIGHT = 480;  //Screen dimension

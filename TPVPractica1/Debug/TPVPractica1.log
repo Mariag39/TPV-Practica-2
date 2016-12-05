@@ -1,33 +1,54 @@
-﻿Compilación iniciada a las 23/11/2016 17:48:34.
-     1>Proyecto "C:\hlocal\prac2\TPV-Practica-2\TPVPractica1\TPVPractica1.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 05/12/2016 17:30:35.
+     1>Proyecto "C:\hlocal\TPV-Practica-2\TPVPractica1\TPVPractica1.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\software\programacion\MSVStudio2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GlobosPG.cpp JuegoPG.cpp ObjetoPG.cpp TexturaSDL.cpp mainP1.cpp
+         C:\software\programacion\MSVStudio2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GlobosPG.cpp JuegoPG.cpp Mariposa.cpp ObjetoPG.cpp TexturaSDL.cpp mainP1.cpp
          mainP1.cpp
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(7): error C2504: 'ObjetoPG' : clase base sin definir
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(11): error C2061: error de sintaxis : identificador 'JuegoPG'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C2143: error de sintaxis : falta ';' delante de '*'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2065: 'pJuego' : identificador no declarado
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2227: el operando izquierdo de '->getMousePos' debe señalar al tipo class/struct/union/generic
+                 el tipo es 'unknown-type'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(14): error C2061: error de sintaxis : identificador 'JuegoPG'
          TexturaSDL.cpp
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(7): error C2504: 'ObjetoPG' : clase base sin definir
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(11): error C2061: error de sintaxis : identificador 'JuegoPG'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C2143: error de sintaxis : falta ';' delante de '*'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2065: 'pJuego' : identificador no declarado
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2227: el operando izquierdo de '->getMousePos' debe señalar al tipo class/struct/union/generic
+                 el tipo es 'unknown-type'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(14): error C2061: error de sintaxis : identificador 'JuegoPG'
+         ObjetoPG.cpp
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(10): error C2504: 'ObjetoPG' : clase base sin definir
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(14): error C2061: error de sintaxis : identificador 'JuegoPG'
+         Mariposa.cpp
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(10): error C2504: 'ObjetoPG' : clase base sin definir
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(14): error C2061: error de sintaxis : identificador 'JuegoPG'
          JuegoPG.cpp
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(7): error C2504: 'ObjetoPG' : clase base sin definir
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(11): error C2061: error de sintaxis : identificador 'JuegoPG'
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\juegopg.cpp(4): fatal error C1083: No se puede abrir el archivo incluir: 'SDL_mixer.h': No such file or directory
-         GlobosPG.cpp
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(7): error C2504: 'ObjetoPG' : clase base sin definir
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(11): error C2061: error de sintaxis : identificador 'JuegoPG'
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.cpp(6): error C2511: 'GlobosPG::GlobosPG(TexturaSDL *,int,int,JuegoPG *)' : la función miembro sobrecargada no se ha encontrado en 'GlobosPG'
-                 c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.h(6) : vea la declaración de 'GlobosPG'
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.cpp(7): error C2550: 'GlobosPG::{ctor}' : las listas de inicializadores de constructor sólo se permiten en las definiciones de constructor
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.cpp(10): error C2597: referencia no válida a miembro no static 'GlobosPG::PVIS'
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.cpp(10): error C3867: 'GlobosPG::PVIS': falta la lista de argumentos de la llamada a la función; utilice '&GlobosPG::PVIS' para crear un puntero al miembro
-     1>c:\hlocal\prac2\tpv-practica-2\tpvpractica1\globospg.cpp(10): error C2568: '<' : no se puede resolver la sobrecarga de funciones
-                 no se puede recuperar de errores anteriores; se detiene la compilación
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C2143: error de sintaxis : falta ';' delante de '*'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(22): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2065: 'pJuego' : identificador no declarado
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\objetopg.h(13): error C2227: el operando izquierdo de '->getMousePos' debe señalar al tipo class/struct/union/generic
+                 el tipo es 'unknown-type'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.h(14): error C2061: error de sintaxis : identificador 'JuegoPG'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(94): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(113): error C2259: GlobosPG' : no se puede crear una instancia de una clase abstract
+                 debido a los siguientes miembros:
+                 'void ObjetoJuego::draw(void)' : es abstracto
+                 c:\hlocal\tpv-practica-2\tpvpractica1\objetojuego.h(9) : vea la declaración de 'ObjetoJuego::draw'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(121): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(127): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(129): error C2039: 'puntos' : no es un miembro de 'ObjetoJuego'
+                 c:\hlocal\tpv-practica-2\tpvpractica1\objetojuego.h(3) : vea la declaración de 'ObjetoJuego'
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(140): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\juegopg.cpp(141): error C2451: la expresión condicional de tipo 'void' no es válida
+                 Las expresiones de tipo void no se pueden convertir en otros tipos
          Generando código...
          Compilando...
-         ObjetoPG.cpp
+         GlobosPG.cpp
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.cpp(42): warning C4244: '-=' : conversión de 'float' a 'int'; posible pérdida de datos
+     1>c:\hlocal\tpv-practica-2\tpvpractica1\globospg.cpp(43): warning C4244: '-=' : conversión de 'float' a 'int'; posible pérdida de datos
          Generando código...
-     1>Compilación del proyecto terminada "C:\hlocal\prac2\TPV-Practica-2\TPVPractica1\TPVPractica1.vcxproj" (Build destinos) -- ERROR.
+     1>Compilación del proyecto terminada "C:\hlocal\TPV-Practica-2\TPVPractica1\TPVPractica1.vcxproj" (Build destinos) -- ERROR.
 
 ERROR al compilar.
 
-Tiempo transcurrido 00:00:01.45
+Tiempo transcurrido 00:00:01.49

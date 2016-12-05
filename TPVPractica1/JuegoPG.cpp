@@ -21,17 +21,16 @@ JuegoPG::JuegoPG()
 	}
 	/*music->initMusica();
 	music->loadMusic("Donna Summer- Hot Stuff.mp3");*/
-	
-
 
 	gameOver = false;
-	sky->load(pRenderer, "..\\bmps\\sky.png");
+
 	punts = 0;
 	numGlobos = 20;
 	exit = false;
-
-
-
+	nombarch[0] = "..\\bmps\\sky.png";
+	nombarch[1] = "..\\bmps\\yellow.png";
+	nombarch[2] = "png de premio";
+	nombarch[3] = "png de mariposa";
 
 }
 void JuegoPG::Mensaje(string msg1, string msg2) {
@@ -98,10 +97,10 @@ void JuegoPG::render()  {
 	//Show window																			
 	SDL_RenderPresent(pRenderer);
 }
-bool JuegoPG::initGlobos() {
-
+void JuegoPG::initMedia() { //ahora es initMedia  
+	/*
 	TexturaSDL* globostext = new TexturaSDL();
-	globostext->load(pRenderer, "..\\bmps\\yellow.png");
+	globostext->load(pRenderer, );
 	m_globostext.push_back(globostext);
 
 
@@ -114,10 +113,13 @@ bool JuegoPG::initGlobos() {
 		globosvec.push_back(globos);
 
 	}
-	return true;
+	return true;*/
+	
+	
+
 
 }
-void JuegoPG::freeGlobos() {
+void JuegoPG::freeMedia() {  // ahora es freeMedia
 	for (int i = 0; i < globosvec.size(); ++i) {
 		delete globosvec[i];
 	}
@@ -132,6 +134,9 @@ void JuegoPG::onClick(int mpx, int mpy) {
 	}
 }
 void JuegoPG::getMousePos(int& mpx, int& mpy) const{
+	SDL_GetMouseState(&mpx, &mpy);
+}
+void JuegoPG::newBaja(ObjetoJuego* po){
 
 }
 
@@ -166,7 +171,7 @@ void JuegoPG::run() {
 		Uint32 lastUpdate = SDL_GetTicks();
 		Mensaje("PLAY","Ready?");
 		/*music->PlayMusic();*/
-		initGlobos();
+		initMedia();
 		render();
 		handle_event();
 		while (!exit && !gameOver) {
@@ -209,7 +214,7 @@ void JuegoPG::handle_event() {
 
 JuegoPG::~JuegoPG()
 {
-	freeGlobos();
+	freeMedia ();
 	closeSDL();
 	delete sky;
 	
