@@ -98,9 +98,9 @@ void JuegoPG::render()  {
 	SDL_RenderPresent(pRenderer);
 }
 void JuegoPG::initMedia() { //ahora es initMedia  
-	/*
+	
 	TexturaSDL* globostext = new TexturaSDL();
-	globostext->load(pRenderer, );
+	globostext->load(pRenderer, nombarch[1]);
 	m_globostext.push_back(globostext);
 
 
@@ -113,7 +113,7 @@ void JuegoPG::initMedia() { //ahora es initMedia
 		globosvec.push_back(globos);
 
 	}
-	return true;*/
+	
 	
 	
 
@@ -137,6 +137,9 @@ void JuegoPG::getMousePos(int& mpx, int& mpy) const{
 	SDL_GetMouseState(&mpx, &mpy);
 }
 void JuegoPG::newBaja(ObjetoJuego* po){
+	delete po;
+}
+void JuegoPG::newPuntos(ObjetoJuego* po) {
 
 }
 
@@ -216,6 +219,6 @@ JuegoPG::~JuegoPG()
 {
 	freeMedia ();
 	closeSDL();
-	delete sky;
+	
 	
 }

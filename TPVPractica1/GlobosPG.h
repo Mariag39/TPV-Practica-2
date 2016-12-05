@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _H_GlobosPG_H_
+#define _H_GlobosPG_H_
 #include "SDL.h"
 #include "TexturaSDL.h"
 #include <vector>
@@ -30,4 +32,5 @@ private:
 	const int PDES = 50;
 	SDL_Renderer* pRenderer;
 };
+#endif
 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _H_ObjetoPG_H_
+#define _H_ObjetoPG_H_
 #include "ObjetoJuego.h"
 #include "SDL.h"
 #include "JuegoPG.h"
@@ -21,4 +23,5 @@ private:
 	SDL_Rect rect;
 	JuegoPG* pJuego;
 };
+#endif
 

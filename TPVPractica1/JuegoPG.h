@@ -3,7 +3,6 @@
 #include <vector>
 #include "SDL_image.h"
 #include "Sound.h"
-#include "GlobosPG.h"
 #include "ObjetoJuego.h"
 using namespace std;
 
@@ -47,7 +46,7 @@ private:
 	const int SCREEN_WIDTH = 640;   //Screen dimension
 	const int SCREEN_HEIGHT = 480;  //Screen dimension
 	SDL_Rect background;
-	TexturaSDL* sky = new TexturaSDL();
+	TexturaSDL* sky;
 	bool error;
 	bool exit;
 	bool gameOver;
