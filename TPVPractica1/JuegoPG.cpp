@@ -3,6 +3,8 @@
 #include "Sound.h"
 #include "TexturaSDL.h"
 #include "GlobosPG.h"
+#include "Premio.h"
+#include "Mariposa.h"
 #include <iostream>
 #include "SDL_image.h"
 #include <vector>
@@ -29,8 +31,8 @@ JuegoPG::JuegoPG()
 	exit = false;
 	nombarch[0] = "..\\bmps\\sky.png";
 	nombarch[1] = "..\\bmps\\yellow.png";
-	nombarch[2] = "png de premio";
-	nombarch[3] = "png de mariposa";
+	nombarch[2] = "..\\bmps\\premio.png";
+	nombarch[3] = "..\\bmps\\mariposa.png";
 
 }
 void JuegoPG::Mensaje(string msg1, string msg2) {
@@ -102,7 +104,8 @@ void JuegoPG::initMedia() { //ahora es initMedia
 	TexturaSDL* globostext = new TexturaSDL();
 	globostext->load(pRenderer, nombarch[1]);
 	m_globostext.push_back(globostext);
-
+	/*eTextura[TFondo] = new TexturaSDL();
+	eTextura[TFondo]->load(pRenderer, nombarch[0]);*/
 
 	int x;
 	int y;
@@ -111,15 +114,10 @@ void JuegoPG::initMedia() { //ahora es initMedia
 		y = rand() % (SCREEN_WIDTH - 5);
 		GlobosPG* globos = new GlobosPG(m_globostext[0], x, y); //falta el puntero a juegoPG
 		globosvec.push_back(globos);
-
 	}
 	
-	
-	
-
-
 }
-void JuegoPG::freeMedia() {  // ahora es freeMedia
+void JuegoPG::freeMedia() {  
 	for (int i = 0; i < globosvec.size(); ++i) {
 		delete globosvec[i];
 	}
@@ -137,18 +135,41 @@ void JuegoPG::getMousePos(int& mpx, int& mpy) const{
 	SDL_GetMouseState(&mpx, &mpy);
 }
 void JuegoPG::newBaja(ObjetoJuego* po){
-	delete po;
+	if (typeid(po) == typeid(GlobosPG)){
+		numGlobos--;
+		dynamic_cast<GlobosPG*>(po)->visible = false;
+	}
+	else if (typeid(po) == typeid(Mariposa)){
+		dynamic_cast<Mariposa*>(po)->visible = false;
+		newPuntos(po);
+	}
+	else if (typeid(po) == typeid(Premio)){
+		dynamic_cast<Premio*>(po)->visible = false;
+	}
 }
 void JuegoPG::newPuntos(ObjetoJuego* po) {
+	if (typeid(po) == typeid(GlobosPG)) {
+		punts += dynamic_cast<GlobosPG*>(po)->puntos;
+	}
+	else if (typeid(po) == typeid(Premio)) {
+		punts += dynamic_cast<Premio*>(po)->pp;
+	}
+	else if (typeid(po) == typeid(Mariposa)){
+		newPremio(po);
+	} 
 
 }
-
+void JuegoPG::newPremio(ObjetoJuego* po){ 
+	
+	if (typeid(po) == typeid(Premio)) {
+		dynamic_cast<Premio*>(po);
+	}
+}
 
 void JuegoPG::update() {
 	for (int i = 0; i < globosvec.size(); ++i) {
 		if (globosvec[i]->update()) {
 			numGlobos--;
-			
 		}
 	}
 	if (numGlobos <= 0) {
@@ -158,10 +179,7 @@ void JuegoPG::update() {
 		gameOver = false;
 	}
 
-
 }
-
-
 
 void JuegoPG::onExit() {
 	exit = true;

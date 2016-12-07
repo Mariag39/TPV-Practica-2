@@ -7,7 +7,7 @@
 using namespace std;
 
 
- enum Textura_t { TFondo = 0, TGlobo = 1, TPremio = 2, TMariposa = 3 };
+ enum Textura_t  { TFondo, TGlobo, TPremio, TMariposa };
 class JuegoPG
 {
 	
@@ -30,7 +30,7 @@ public:
 private:
 	/*Sound* music;*/
 	bool initSDL();
-	
+	Textura_t texturas;
 	vector<string> nombarch;
 	void closeSDL();
 	void Mensaje(string msg1, string msg2);
@@ -46,7 +46,7 @@ private:
 	const int SCREEN_WIDTH = 640;   //Screen dimension
 	const int SCREEN_HEIGHT = 480;  //Screen dimension
 	SDL_Rect background;
-	TexturaSDL* sky;
+	TexturaSDL* eTextura;
 	bool error;
 	bool exit;
 	bool gameOver;

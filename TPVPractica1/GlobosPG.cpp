@@ -3,10 +3,8 @@
 #include "SDL_image.h"
 using namespace std;
 
-GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(img)
+GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(img), pJuego(juego)
 {
-
-	
 	if (rand() % 100 < PVIS) visible = true; else visible = false;
 	explotado = false;
 	rect.x = px;
@@ -15,18 +13,16 @@ GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(im
 	rect.h = pTextura->getHeight();
 	desinflado = 5;
 	
-
 }
 
 bool GlobosPG::onClick() {
 	bool destruido = false;
 	if (visible && !explotado) {
-		  if (dentro()){ //static cast??
-			visible = false;
-			destruido = true;
-			//puntos++;
-			explotado = true;
-
+		  if (ObjetoPG::dentro(x,y)){ 
+			  pJuego->newBaja(this);
+			  pJuego->newPuntos(this);
+			  destruido = true;
+			  explotado = true;
 		}
 	}
 	return destruido;
@@ -48,19 +44,14 @@ void GlobosPG::update() {
 				explotado = true;
 			}
 		}
-
 	}
 	if (!explotado && !visible)
 		if (rand() % 100 < PVIS) visible = true; else visible = false;
 	//return destruido;
 }
 
-
-
-
 void GlobosPG::draw() const {
 	if (visible && !explotado) {
-
 		pTextura->draw(pRenderer, rect);
 	}
 }

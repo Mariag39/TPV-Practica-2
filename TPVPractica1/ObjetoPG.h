@@ -10,11 +10,11 @@ class ObjetoPG :	public ObjetoJuego
 {
 public:
 	ObjetoPG();
-	virtual bool dentro(int x, int y) const;
-		
+	virtual bool dentro(int x, int y) const;	
 	virtual void draw();
-	
     ~ObjetoPG();
+	int x;
+	int y;
 private: 
 	
 	

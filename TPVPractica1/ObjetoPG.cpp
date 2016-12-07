@@ -6,11 +6,11 @@ ObjetoPG::ObjetoPG()
 {
 }
 bool ObjetoPG::dentro(int x, int y) const {
-	x = pmx;
-	y = pmy;
+	int pmx = x;
+	int pmy = y;
 	pJuego->getMousePos(x, y);
-	if (pmx >= rect.x && (rect.x + rect.w) >= pmx && pmy >= rect.y && (rect.y + rect.h) >= pmy) return true;
-	else return false;
+	return (pmx >= x && (x + ancho) >= pmx && pmy >= y && (y + alto) >= pmy);
+	
 }
 void ObjetoPG::draw() {
 	rect.x = pmx;
@@ -18,7 +18,6 @@ void ObjetoPG::draw() {
 	rect.w = ancho;
 	rect.h = alto;
     pJuego->getTextura(texturas)->draw(pJuego->getRender, rect);
-
 }
 
 ObjetoPG::~ObjetoPG()

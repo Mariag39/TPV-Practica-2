@@ -36,6 +36,9 @@
     <ClCompile Include="Mariposa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Premio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GlobosPG.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mariposa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Premio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

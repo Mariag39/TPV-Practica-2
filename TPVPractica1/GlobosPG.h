@@ -6,7 +6,7 @@
 #include <vector>
 #include "ObjetoPG.h"
 
-
+	
 using namespace std;
 class GlobosPG : public ObjetoPG
 {
@@ -19,18 +19,21 @@ public:
 	bool onClick();
 	void update();
 	int puntos;
-	
+	bool visible;
 
 
 private:
 	SDL_Rect rect;
 	TexturaSDL* pTextura;
 	float desinflado;
-	bool visible;
+	JuegoPG* pJuego;
 	bool explotado;
 	const int PVIS = 20;
 	const int PDES = 50;
 	SDL_Renderer* pRenderer;
+
+protected:
+	
 };
 #endif
 
