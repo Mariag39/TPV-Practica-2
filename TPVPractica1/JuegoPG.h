@@ -7,16 +7,16 @@
 using namespace std;
 
 
-
+ enum Textura_t { TFondo = 0, TGlobo = 1, TPremio = 2, TMariposa = 3 };
 class JuegoPG
 {
-
+	
 public:
 	JuegoPG();
 	~JuegoPG();
 	void run();
 	void onExit();
-	enum Textura_t { TFondo = 0, TGlobo = 1, TPremio = 2, TMariposa = 3 };
+	
 	TexturaSDL* getTextura(Textura_t et) const { return m_globostext[et]; } //es el vector de texturas??
 	SDL_Renderer* getRender() const;
 	void getMousePos(int& mpx, int& mpy) const;
