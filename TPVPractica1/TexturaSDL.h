@@ -15,12 +15,15 @@ public:
 	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect);
 	int getWidth();
 	int getHeight();
+	void animationRect(int frames, int actframe);
 	//bool load(SDL_Renderer*, string const& nombArch, SDL_Color const& colKey)
 	// static SDL_Surface* load(string nombreArchivo)
 private:
 	SDL_Texture* texturas;
+	SDL_Rect rect;
 	int width;
 	int height;
+	bool mov;
 
 };
 

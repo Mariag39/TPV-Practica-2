@@ -3,14 +3,14 @@
 #include "SDL_image.h"
 using namespace std;
 
-GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(img), pJuego(juego)
+GlobosPG::GlobosPG(Textura_t img, int px, int py, JuegoPG* juego) :pTextura(img), pJuego(juego)
 {
 	if (rand() % 100 < PVIS) visible = true; else visible = false;
 	explotado = false;
 	rect.x = px;
 	rect.y = py;
-	rect.w = pTextura->getWidth();
-	rect.h = pTextura->getHeight();
+	rect.w = 100;
+	rect.h = 150;
 	desinflado = 5;
 	
 }
@@ -18,7 +18,7 @@ GlobosPG::GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego) :pTextura(im
 bool GlobosPG::onClick() {
 	bool destruido = false;
 	if (visible && !explotado) {
-		  if (ObjetoPG::dentro(x,y)){ 
+		  if (ObjetoPG::dentro(rect.x,rect.y)){ 
 			  pJuego->newBaja(this);
 			  pJuego->newPuntos(this);
 			  destruido = true;
@@ -46,18 +46,21 @@ void GlobosPG::update() {
 		}
 	}
 	if (!explotado && !visible)
-		if (rand() % 100 < PVIS) visible = true; else visible = false;
+		if (rand() % 100 < PVIS) visible = true; 
+		else {
+			visible = false;
+			pJuego->newBaja(this);
+		}
 	//return destruido;
 }
 
 void GlobosPG::draw() const {
-	if (visible && !explotado) {
-		pTextura->draw(pRenderer, rect);
+	
 	}
-}
+
 
 GlobosPG::~GlobosPG()
 {
-	delete pTextura;
+	
 	
 }

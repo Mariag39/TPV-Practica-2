@@ -13,18 +13,18 @@ class GlobosPG : public ObjetoPG
 
 
 public:
-	GlobosPG(TexturaSDL* img, int px, int py, JuegoPG* juego);
+	GlobosPG(Textura_t img, int px, int py, JuegoPG* juego);
 	~GlobosPG();
-	void draw() const;
+	virtual void draw() const;
 	bool onClick();
-	void update();
+	virtual void update();
 	int puntos;
 	bool visible;
 
 
 private:
 	SDL_Rect rect;
-	TexturaSDL* pTextura;
+	Textura_t pTextura;
 	float desinflado;
 	JuegoPG* pJuego;
 	bool explotado;

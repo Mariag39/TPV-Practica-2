@@ -3,23 +3,27 @@
 #define _H_Premio_H_
 #include "ObjetoPG.h"
 #include "SDL.h"
-#include "TexturaSDL.h" // pregunta pero yo creo que si hace falta, el draw lo necesiará,no?
+
 
 
 class Premio : public ObjetoPG
 {
 public:
-	Premio();
-	~Premio();
+	Premio(Textura_t img, int x, int y, JuegoPG* pJuego);
+	virtual ~Premio();
 	//Métodos que hereda ???
-	void draw() const;
+	virtual void draw() const;
 	bool onClick();
-	void update();
+	virtual void update();
 	int pp;
 	bool visible;
 	//void reinicio;    //método específico para reiniciar un premio
 
 private:
-
+	JuegoPG* pJuego;
+	Textura_t pTextura;
+	int ini = 15;
+	void reinicio();
+	int oport;
 };
 #endif

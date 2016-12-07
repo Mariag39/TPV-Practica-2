@@ -12,7 +12,7 @@ TexturaSDL::TexturaSDL()
 {
 	width = 0;
 	height = 0;
-
+	mov = false;
 
 }
 bool TexturaSDL::load(SDL_Renderer* pRenderer, const string& nombArch) {
@@ -30,8 +30,9 @@ bool TexturaSDL::load(SDL_Renderer* pRenderer, const string& nombArch) {
 	else {
 		texturas = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
-		width = pTempSurface->w;
-		height = pTempSurface->h;
+		width = pTempSurface->clip_rect.w;
+		height = pTempSurface->clip_rect.h;
+		rect = pTempSurface->clip_rect;
 		success = texturas != nullptr;
 	}
 
@@ -56,6 +57,10 @@ void TexturaSDL::free() {
 		height = 0;
 
 	}
+}
+void TexturaSDL::animationRect(int frames, int actframe) {
+	this->rect.w = width / frames;
+	this->rect.x = this->rect.w * actframe;
 }
 int TexturaSDL::getHeight() { return height; }
 int TexturaSDL::getWidth() { return width; }

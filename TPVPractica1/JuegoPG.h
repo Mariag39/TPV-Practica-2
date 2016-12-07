@@ -3,6 +3,7 @@
 #include <vector>
 #include "SDL_image.h"
 #include "Sound.h"
+#include "TexturaSDL.h"
 #include "ObjetoJuego.h"
 using namespace std;
 
@@ -16,9 +17,13 @@ public:
 	~JuegoPG();
 	void run();
 	void onExit();
-	
-	TexturaSDL* getTextura(Textura_t et) const { return m_globostext[et]; } //es el vector de texturas??
-	SDL_Renderer* getRender() const;
+	TexturaSDL* getTextura(Textura_t et) const { 
+		return objetostext[et]; 
+	}; //es el vector de texturas??
+	SDL_Renderer* getRender() const { 
+		return pRenderer;
+	};
+	void random(int& x, int& y);
 	void getMousePos(int& mpx, int& mpy) const;
 	void newBaja(ObjetoJuego* po); // Los objetos informarán al juego cuando causen baja  
 	void newPuntos(ObjetoJuego* po); // Los objetos informarán al juego cuando se obtengan puntos 
@@ -29,6 +34,8 @@ public:
 
 private:
 	/*Sound* music;*/
+	int numMariposas;
+	bool initObjetos();
 	bool initSDL();
 	Textura_t texturas;
 	vector<string> nombarch;
@@ -41,12 +48,12 @@ private:
 	SDL_Window* pWindow;
 	SDL_Renderer* pRenderer;
 	SDL_Texture* pTexture;
-	vector<TexturaSDL*> m_globostext;
-	vector<ObjetoJuego*> globosvec; //era GlobosPG
+	vector<TexturaSDL*> objetostext;
+	vector<ObjetoJuego*> objetosvec; //era GlobosPG
 	const int SCREEN_WIDTH = 640;   //Screen dimension
 	const int SCREEN_HEIGHT = 480;  //Screen dimension
 	SDL_Rect background;
-	TexturaSDL* eTextura;
+	
 	bool error;
 	bool exit;
 	bool gameOver;

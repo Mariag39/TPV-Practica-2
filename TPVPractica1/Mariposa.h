@@ -9,12 +9,21 @@
 class Mariposa : public ObjetoPG
 {
 public:
-	Mariposa();
-	~Mariposa();
+	Mariposa(Textura_t img, int x, int y, JuegoPG* juego, int numFrames);
+	virtual ~Mariposa();
 	//Métodos que hereda ???
-	void draw() const;
+	virtual void draw() const;
 	bool onClick();
-	void update();
+	virtual void update();
 	bool visible;
+private:
+	Textura_t pTextura;
+	JuegoPG* pJuego;
+	int clicks;
+	int frames;
+	int actframe;
+	int velx, vely;
+	int puntos;
+	void movimiento();
 };
 #endif

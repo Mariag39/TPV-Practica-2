@@ -21,12 +21,14 @@ JuegoPG::JuegoPG()
 	else {
 		error = true;
 	}
-	/*music->initMusica();
-	music->loadMusic("Donna Summer- Hot Stuff.mp3");*/
+	initMedia();
+	initObjetos();
+	
 
 	gameOver = false;
 
 	punts = 0;
+	numMariposas = 5;
 	numGlobos = 20;
 	exit = false;
 	nombarch[0] = "..\\bmps\\sky.png";
@@ -85,49 +87,68 @@ void JuegoPG::render()  {
 	SDL_RenderClear(pRenderer);
 
 	SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, 255);
-	background.h = SCREEN_HEIGHT;
-	background.w = SCREEN_WIDTH;
-	background.y = 0;
-	background.x = 0;
-	sky->draw(pRenderer, background);
-	// Draw objets Draw()
 
-	for (int i = 0; i < globosvec.size(); i++) {
-		globosvec[i]->draw();
+	for (int i = 0; i < objetosvec.size(); i++) {
+		objetosvec[i]->draw();
 	}
 
 	//Show window																			
 	SDL_RenderPresent(pRenderer);
 }
-void JuegoPG::initMedia() { //ahora es initMedia  
-	
-	TexturaSDL* globostext = new TexturaSDL();
-	globostext->load(pRenderer, nombarch[1]);
-	m_globostext.push_back(globostext);
-	/*eTextura[TFondo] = new TexturaSDL();
-	eTextura[TFondo]->load(pRenderer, nombarch[0]);*/
+void JuegoPG::initMedia() {
+    /*music->initMusica();
+	music->loadMusic("Donna Summer- Hot Stuff.mp3");*/
+	for (size_t i = 0; i < 3; i++) {
+		objetostext.push_back(new TexturaSDL());
+		objetostext[i]->load(pRenderer, nombarch[i]);
+	}
+}
+void JuegoPG::random(int& x, int& y) {
+	y = rand() % SCREEN_HEIGHT;
+	x = rand() % SCREEN_WIDTH;
+	if (y > SCREEN_HEIGHT - 100) y = SCREEN_HEIGHT - 100;
+	if (x > SCREEN_WIDTH - 100) x = SCREEN_WIDTH - 100;
 
+}
+bool JuegoPG::initObjetos(){
+	
 	int x;
 	int y;
 	for (int i = 0; i < numGlobos; i++) {
+
 		x = rand() % (SCREEN_HEIGHT - 5);
 		y = rand() % (SCREEN_WIDTH - 5);
-		GlobosPG* globos = new GlobosPG(m_globostext[0], x, y); //falta el puntero a juegoPG
-		globosvec.push_back(globos);
+		objetosvec.push_back(new GlobosPG(Textura_t::TGlobo,x, y, this));
 	}
-	
-}
-void JuegoPG::freeMedia() {  
-	for (int i = 0; i < globosvec.size(); ++i) {
-		delete globosvec[i];
+	for (int i = 0; i < numMariposas; i++) {
+
+		x = rand() % (SCREEN_HEIGHT - 5);
+		y = rand() % (SCREEN_WIDTH - 5);
+		objetosvec.push_back(new Mariposa(Textura_t::TMariposa,x, y, this, 10));
 	}
-	delete m_globostext[0];
+	x = rand() % (SCREEN_HEIGHT - 5);
+	y = rand() % (SCREEN_WIDTH - 5);
+	objetosvec.push_back(new Premio(Textura_t::TPremio,x, y, this));
+	return true;
+  }
+
+void JuegoPG::freeMedia() {
+	for (unsigned int i = 0; i < objetosvec.size(); i++) {
+		if (objetosvec[i] != nullptr) {
+			delete objetosvec[i];
+			
+		}
+	}
+	for (unsigned int i = 0; i < objetostext.size(); i++) {
+		delete objetostext[i];
+		
+	}
 }
-void JuegoPG::onClick(int mpx, int mpy) {
-	for (int i = 0; i < globosvec.size(); ++i) {
-		if (globosvec[i]->onClick()) {
-			punts += globosvec[i]->puntos;
-			numGlobos--;
+void JuegoPG::onClick(int mpx, int mpy){
+	bool pinchado = false;
+	for (int i = objetosvec.size() - 1; i >= 0; i--) {
+		if (objetosvec[i]->onClick()) {
+			pinchado = true;
 		}
 	}
 }
@@ -135,11 +156,11 @@ void JuegoPG::getMousePos(int& mpx, int& mpy) const{
 	SDL_GetMouseState(&mpx, &mpy);
 }
 void JuegoPG::newBaja(ObjetoJuego* po){
-	if (typeid(po) == typeid(GlobosPG)){
+	if (typeid(*po) == typeid(GlobosPG)){
 		numGlobos--;
 		dynamic_cast<GlobosPG*>(po)->visible = false;
 	}
-	else if (typeid(po) == typeid(Mariposa)){
+	else if (typeid(*po) == typeid(Mariposa)){
 		dynamic_cast<Mariposa*>(po)->visible = false;
 		newPuntos(po);
 	}
@@ -162,21 +183,13 @@ void JuegoPG::newPuntos(ObjetoJuego* po) {
 void JuegoPG::newPremio(ObjetoJuego* po){ 
 	
 	if (typeid(po) == typeid(Premio)) {
-		dynamic_cast<Premio*>(po);
+		dynamic_cast<Premio*>(po)->visible = true;
 	}
 }
 
 void JuegoPG::update() {
-	for (int i = 0; i < globosvec.size(); ++i) {
-		if (globosvec[i]->update()) {
-			numGlobos--;
-		}
-	}
-	if (numGlobos <= 0) {
-		gameOver = true;
-	}
-	else {
-		gameOver = false;
+	for (int i = 0; i < objetosvec.size(); ++i) {
+		objetosvec[i]->update();
 	}
 
 }
